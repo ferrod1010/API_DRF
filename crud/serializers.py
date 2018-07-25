@@ -11,15 +11,9 @@ class LibroSerializer(serializers.Serializer):
     paginas = serializers.IntegerField()
 
     def create(self, validated_data):
-        """
-        Create and return a new `Serie` instance, given the validated data.
-        """
         return Libro.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
-        """
-        Update and return an existing `Serie` instance, given the validated data.
-        """
         instance.titulo = validated_data.get('titulo', instance.titulo)
         instance.fecha_publicacion = validated_data.get('fecha_publicacion', instance.fecha_publicacion)
         instance.precio = validated_data.get('precio', instance.precio)
